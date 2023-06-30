@@ -1,26 +1,22 @@
-import React from "react";
 
-class Jokes extends React.Component
+
+class Jokes
 {
+
+
     async Joker() {
+        var oneLiner = "";
+        var setup = "";
+        var punchline = ""
         const response = await fetch("https://v2.jokeapi.dev/joke/Any?format=json");
         const jsonData = await response.json();
         console.log(jsonData);
-    }
+        if (jsonData.type === "twopart") { setup = jsonData.setup; console.log(setup); punchline = jsonData.delivery; console.log(punchline); return setup }
+        else { oneLiner = jsonData.joke; console.log(oneLiner); return oneLiner; }
 
-
-        render()
-        {
-            return <div className="test">
-                <h1>hello</h1>
-            </div>
-
+}
         }
 
 
-    
-}
 
-
-
-export {Jokes,  }
+export {Jokes }

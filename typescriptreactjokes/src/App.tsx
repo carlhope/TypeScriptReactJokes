@@ -1,19 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { Car } from './plaything';
-import { Jokes } from './Joke';
+import { JokeAPI} from './Joke';
 
 function App() {
-    const joking = new Jokes();
-   const thejoke = joking.Joker();
-
+    const refresh = () => JokeAPI();
   return (
     <div className="App">
       <header className="App-header">
               <>
-                  <p><Car /></p>
-                  <p>hello</p>
-              </>
+                  <p><JokeAPI /></p> 
+                  <button type="button" onClick={refresh}>New Joke</button>
+               </>   
 
       </header>
     </div>

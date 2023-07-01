@@ -1,22 +1,67 @@
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
+function JokeAPI() {
+    const [joke, setJoke] = useState(null);
+    const [setup, setSetup] = useState(null);
+    const [punchline, setPunchline] = useState(null);
+    const [error, setError] = useState(false);
+    const [state, setState] = useState('');
+    useEffect(() => {
+        setState('loading');
+        axios
+            .get('https://v2.jokeapi.dev/joke/Any?format=json')
+            .then((res) => {
+                setState('success');
 
-class Jokes
-{
+                const onelinerString = res.data.joke;
+                setJoke(onelinerString);
 
+                const setupString = res.data.setup;
+                setSetup(setupString);
 
-    async Joker() {
-        var oneLiner = "";
-        var setup = "";
-        var punchline = ""
-        const response = await fetch("https://v2.jokeapi.dev/joke/Any?format=json");
-        const jsonData = await response.json();
-        console.log(jsonData);
-        if (jsonData.type === "twopart") { setup = jsonData.setup; console.log(setup); punchline = jsonData.delivery; console.log(punchline); return setup }
-        else { oneLiner = jsonData.joke; console.log(oneLiner); return oneLiner; }
+                const punchlineString = res.data.delivery;
+                setPunchline(punchlineString);
+                
+                console.log(onelinerString);
+                console.log(setupString);
+                console.log(punchlineString);
+            })
+            .catch((err) => {
+                console.error('Error:', err);
+                setState('error');
+                setError(err);
+            });
+    }, []);
+    if (state === 'error')
+        return (
+            <h1>
 
+                {error.toString()}
+            </h1>
+        );
+    return (
+        <div>
+            <div>
+                {state === 'loading' ? (
+                    <h1>Loading...</h1>
+                ) : (
+                    <>
+                        <p>{setup}</p>
+                        <p>{joke}</p>
+                            <p>{punchline}</p>
+
+                            
+                    </>
+                )}
+            </div>
+        </div>
+    );
 }
-        }
 
 
 
-export {Jokes }
+
+
+
+export { JokeAPI }

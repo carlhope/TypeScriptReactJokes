@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import { element } from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
 import { JokeAPI} from './Joke';
 
 function App() {
-    const refresh = () => JokeAPI();
-  return (
+    
+   return (
     <div className="App">
       <header className="App-header">
-              <>
-                  <p><JokeAPI /></p> 
-                  <button type="button" onClick={refresh}>New Joke</button>
-               </>   
+               <>
+                   <JokeAPI />
+               </>
 
       </header>
     </div>
@@ -18,3 +19,4 @@ function App() {
 }
 
 export default App;
+

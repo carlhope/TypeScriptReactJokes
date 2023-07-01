@@ -50,6 +50,7 @@ function JokeAPI() {
                         <p>{setup}</p>
                         <p>{joke}</p>
                             <p>{punchline}</p>
+                            <button onClick={}>New Joke</button>
 
                             
                     </>
@@ -58,6 +59,9 @@ function JokeAPI() {
         </div>
     );
 }
+
+
+
 
 
 

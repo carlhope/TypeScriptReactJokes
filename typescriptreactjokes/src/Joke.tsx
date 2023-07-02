@@ -9,6 +9,8 @@ function JokeAPI() {
     const [error, setError] = useState(false);
     const [state, setState] = useState('');
     const [name, setName] = useState("World");
+    const [seed, setSeed] = useState(0);
+    
     useEffect(() => {
         setState('loading');
         axios
@@ -34,7 +36,7 @@ function JokeAPI() {
                 setState('error');
                 setError(err);
             });
-    }, []);
+    }, [seed]);
     if (state === 'error')
         return (
             <h1>
@@ -56,7 +58,7 @@ function JokeAPI() {
                         <p>{joke}</p>
                             <p>{punchline}</p>
                             
-                            <button onClick={()=>refreshPage()}>New Joke</button>
+                            <button onClick={() => setSeed(seed+1)}>New Joke</button>
 
                             
                     </>

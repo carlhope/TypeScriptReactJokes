@@ -8,7 +8,7 @@ function JokeAPI() {
     const [punchline, setPunchline] = useState(null);
     const [error, setError] = useState(false);
     const [state, setState] = useState('');
-    const [name, setName] = useState("World");
+    
     const [seed, setSeed] = useState(0);
     
     useEffect(() => {
@@ -51,9 +51,7 @@ function JokeAPI() {
                     <h1>Loading...</h1>
                 ) : (
                         <>
-                            <label> Enter Name:<input type="text" content="hi" onChange={e => setName(e.target.value)}></input></label>
-                            
-                            <p>hello {name}, welcome to my joke site</p>
+                           
                         <p>{setup}</p>
                         <p>{joke}</p>
                             <p>{punchline}</p>
@@ -68,6 +66,17 @@ function JokeAPI() {
     );
 }
 
+function DisplayUserName()
+{
+    const [name, setName] = useState("World");
+    return (
+        <>
+            <label> Enter Name:<input type="text" content="hi" onChange={e => setName(e.target.value)}></input></label>
+
+            <p>hello {name}, welcome to my joke site</p>
+        </>
+    )
+}
 function refreshPage() { window.location.reload() }
 
 
@@ -80,4 +89,4 @@ function refreshPage() { window.location.reload() }
 
 
 
-export { JokeAPI }
+export { JokeAPI , DisplayUserName}

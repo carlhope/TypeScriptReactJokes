@@ -2,7 +2,7 @@ import { element } from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-import { JokeAPI} from './Joke';
+import { JokeAPI, DisplayUserName} from './Joke';
 
 function App() {
     
@@ -10,7 +10,10 @@ function App() {
     <div className="App">
       <header className="App-header">
                <>
-                   <JokeAPI />
+                  <DisplayUserName />
+              
+                       <JokeAPI />
+                   
                </>
 
       </header>

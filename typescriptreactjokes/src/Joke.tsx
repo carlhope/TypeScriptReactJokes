@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { text } from "stream/consumers";
 
 function JokeAPI() {
     const [joke, setJoke] = useState(null);
@@ -7,6 +8,7 @@ function JokeAPI() {
     const [punchline, setPunchline] = useState(null);
     const [error, setError] = useState(false);
     const [state, setState] = useState('');
+    const [name, setName] = useState("World");
     useEffect(() => {
         setState('loading');
         axios
@@ -46,11 +48,15 @@ function JokeAPI() {
                 {state === 'loading' ? (
                     <h1>Loading...</h1>
                 ) : (
-                    <>
+                        <>
+                            <label> Enter Name:<input type="text" content="hi" onChange={e => setName(e.target.value)}></input></label>
+                            
+                            <p>hello {name}, welcome to my joke site</p>
                         <p>{setup}</p>
                         <p>{joke}</p>
                             <p>{punchline}</p>
-                            <button onClick={}>New Joke</button>
+                            
+                            <button onClick={()=>refreshPage()}>New Joke</button>
 
                             
                     </>
@@ -59,6 +65,10 @@ function JokeAPI() {
         </div>
     );
 }
+
+function refreshPage() { window.location.reload() }
+
+
 
 
 

@@ -14,7 +14,7 @@ function JokeAPI() {
     useEffect(() => {
         setState('loading');
         axios
-            .get('https://v2.jokeapi.dev/joke/Any?format=json')
+            .get('https://v2.jokeapi.dev/joke/Any?format=json&safemode')
             .then((res) => {
                 setState('success');
 
